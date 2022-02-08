@@ -1,0 +1,85 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.logo {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo svg {
+  max-width: 500px;
+  height: auto;
+}
+
+.flyer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  line-height: 1.75;
+  margin: 0 auto;
+}
+
+.content img {
+  width: 90%;
+  margin: auto;
+}
+
+.content .divider {
+  max-width: 500px;
+  margin: 20px auto;
+  height: 2px;
+  border-radius: 120px;
+  background: #f3f3f3;
+}
+
+.content .scan-img {
+  margin-top: 30px;
+  width: 200px;
+}
+
+.content .contact {
+  text-align: center;
+}
+
+.content .main-copy {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.content .sub-copy {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h1,
+h2 {
+  margin: 30px auto;
+  margin-bottom: 0;
+  text-align: center;
+}
+/*# sourceMappingURL=styles.css.map */
