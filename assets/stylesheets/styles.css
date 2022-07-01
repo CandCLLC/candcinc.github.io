@@ -44,9 +44,16 @@ body {
   margin: 0 auto;
 }
 
-.content img {
-  width: 90%;
+.content .main-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: auto;
+  max-width: 80%;
+  min-width: 320px;
 }
 
 .content .divider {
@@ -70,6 +77,11 @@ body {
 .content .main-copy {
   max-width: 700px;
   margin: 0 auto;
+}
+
+.content .subtext {
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 .content .sub-copy {
