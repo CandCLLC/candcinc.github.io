@@ -61,7 +61,7 @@
       <img class="main-img" src="/assets/imgs/truck.png" alt="C and C Inc - Tow Truck">
     </a>
     <p class="subtext">(Click on the Tow-Truck to visit our Facebook page.)</p>
-    
+
     <h1>The Professional Towing Solution You’re Looking for</h1>
 
     <div class="divider"></div>
@@ -77,10 +77,90 @@
     <h2>State Approved!</h2>
 
     <div class="divider"></div>
+
     <p class="sub-copy">We are legal custodians for abandoned vehicles in Michigan.
       <br>Contact Us Today!</p>
-
     <img class="scan-img" src="/assets/imgs/scan.png" alt="Scan Me">
+
+    <div class="divider"></div>
+    <div class="car-offer">
+      <h2>See how much we will offer for your junk car!</h2>
+      <br>
+      <form>
+        <input type="text" id="selectedYearByUser" placeholder="year" type="text">
+        <input type="text" id="selectedMakeByUser" placeholder="make" type="text">
+        <input type="text" id="selectedModelByUser" placeholder="model" type="text">
+        <input type="submit" value="Get Offer">
+      </form>
+
+      <div class="car-results">
+        <h5>The Curb Weight for a
+          <span id="selectedYear"></span>
+          <span id="selectedMake"></span>
+          <span id="selectedModel"></span>
+          is
+          <span id="curb-weight"></span> lbs.
+        </h5>
+
+        <h3>We will pay you $<span id="pay-price"></span></h3>
+      </div>
+    </div>
+    <div class="divider"></div>
   </div>
+
+  <script>
+    const steelPriceApi = "140";
+    const selectedYear = document.querySelector("#selectedYear");
+    const selectedMake = document.querySelector("#selectedMake");
+    const selectedModel = document.querySelector("#selectedModel");
+    const carResults = document.querySelector(".car-results")
+    const payPrice = document.querySelector("#pay-price");
+    let curbWeight = document.querySelector("#curb-weight");
+    let returnedCurbWeight;
+
+    document.querySelector('form').onsubmit = () => {
+      const apiURL = 'https://vpic.nhtsa.dot.gov/api/vehicles?Year='
+      const searchedYear = document.querySelector("#selectedYearByUser").value;
+      const searchedMake = document.querySelector("#selectedMakeByUser").value;
+      const searchedModel = document.querySelector("#selectedModelByUser").value;
+      const fullQuery = apiURL + searchedYear + '&Make=' + searchedMake + '&Model= ' +
+        searchedModel + '&units=US&format=json';
+      console.log(fullQuery);
+
+      fetch(
+          fullQuery
+        )
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          console.log(data.Results);
+          // Need to correctly reference steelprice from another website, hardocded for now
+          // steelPrice.append(steelPriceApi)
+          let returnedCurbWeight = data.Results[0].Specs[7].Value;
+          let convertedCurbWeight = returnedCurbWeight / 2000;
+          let priceBeforeUnc = convertedCurbWeight * steelPriceApi;
+          let payPriceReturned = priceBeforeUnc * .75;
+          let finalPriceReturned = payPriceReturned.toFixed(2)
+
+          curbWeight.append(returnedCurbWeight);
+          payPrice.append(finalPriceReturned);
+          selectedYear.append(searchedYear);
+          selectedMake.append(searchedMake);
+          selectedModel.append(searchedModel);
+          carResults.classList.add("active")
+
+
+
+          // Need to add error handling
+
+          return console.log("Your curb weight for a " + selectedYearByUser + " " + selectedMakeByUser + " " +
+            selectedModelByUser + " is " + data.Results[0].Specs[7].Value)
+        })
+
+      return false;
+    }
+  </script>
 </body>
+
 </html>
