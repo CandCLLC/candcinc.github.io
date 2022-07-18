@@ -103,9 +103,10 @@
         </h5>
 
         <h3>We will pay you $<span id="pay-price"></span></h3>
-
         <h4>*No Towing Fees</h4>
       </div>
+      <br>
+      <br>
     </div>
     <div class="divider"></div>
   </div>
@@ -125,6 +126,7 @@
       const searchedYear = document.querySelector("#selectedYearByUser").value;
       const searchedMake = document.querySelector("#selectedMakeByUser").value;
       const searchedModel = document.querySelector("#selectedModelByUser").value;
+      let clearPreviousPrice;
       const fullQuery = apiURL + searchedYear + '&Make=' + searchedMake + '&Model= ' +
         searchedModel + '&units=US&format=json';
       console.log(fullQuery);
@@ -139,6 +141,13 @@
           console.log(data.Results);
           // Need to correctly reference steelprice from another website, hardocded for now
           // steelPrice.append(steelPriceApi)
+
+          const clearPreviousPrice = () => {
+            payPrice.innerHTML = "";
+          }
+
+          clearPreviousPrice()
+
           let returnedCurbWeight = data.Results[0].Specs[7].Value;
           let convertedCurbWeight = returnedCurbWeight / 2000;
           let priceBeforeUnc = convertedCurbWeight * steelPriceApi;
