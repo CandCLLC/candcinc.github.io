@@ -105,6 +105,10 @@ h2 {
   text-align: center;
 }
 
+.car-results.active h5 {
+  display: none;
+}
+
 .car-offer {
   margin-top: 0;
   padding-top: 0;
