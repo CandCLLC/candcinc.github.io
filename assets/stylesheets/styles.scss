@@ -1,5 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  // background: red;
 }
 
 .logo {
@@ -47,7 +48,8 @@ body {
 
   .scan-img {
     margin: 30px;
-    width: 200px;
+    margin-top: 60px;
+    width: 150px;
   }
 
   .contact {
@@ -103,10 +105,14 @@ h4 {
 }
 
 .car-offer {
-  margin-top: 0;
+  margin-top: 50px;
   padding-top: 0;
   display: flex;
   flex-direction: column;
+
+  #cash-icon {
+    opacity: 0;
+  }
 
   input[type=text] {
     width: 130px;
@@ -132,6 +138,38 @@ h4 {
     border-radius: 10px;
     cursor: pointer;
   }
+
+  svg {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+  }
+
+  &.offered {
+    #cash-icon {
+      animation: cashAnimation 1s ease-out forwards;
+      transform-origin: center;
+    }
+    #car-icon {
+      display: none;
+    }
+  }
+}
+
+.slider-carousel {
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#pay-price {
+  color: #85BB65;
+  font-size: 26px;
+  font-weight: 700;
+  border-bottom: 2px solid #85BB65;
 }
 
 @media only screen and (max-width: 500px) {
@@ -149,5 +187,47 @@ h4 {
     input[type=submit] {
       margin-top: 20px;
     }
+  }
+}
+
+@keyframes cashAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: scale(0.7);
+    opacity: 1;
+  }
+}
+
+.slick-dots {
+  position: relative !important;
+  top: 30px;
+  z-index: 90;
+}
+
+footer{
+  text-align: center;
+  padding-top: 20px;
+}
+
+.social-media {
+  ul {
+    padding-left: 0;
+  }
+  li {
+    list-style-type: none;
+  }
+  a {
+    // background: red;
+    display: inline-block;
+    padding:10px 12.5px;
+    border-radius: 120px;
+    border: 2px solid black;
+  }
+
+  svg {
+    width: 35px;
+    height: 100%;
   }
 }
