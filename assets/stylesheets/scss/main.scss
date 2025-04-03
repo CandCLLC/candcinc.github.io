@@ -1,0 +1,26 @@
+// Main SCSS file
+// This file imports all the partial files
+
+// Utils
+@use 'utils/variables';
+@use 'utils/mixins';
+@use 'utils/spacing';
+
+// Base
+@use 'base/reset';
+@use 'base/typography';
+
+// Layout
+@use 'layout/grid';
+
+// Components
+@use 'components/buttons';
+
+// Pages
+// These will be added as we create them
+
+// Vendor
+// Any third-party styles would go here
+
+// Themes
+// Any theme-specific styles would go here 

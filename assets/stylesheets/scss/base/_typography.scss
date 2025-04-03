@@ -1,0 +1,249 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+// Google Fonts import
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+// Base typography styles
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $dark-color;
+}
+
+// Heading styles
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+  color: $primary-color;
+}
+
+h1 {
+  font-size: $font-size-huge;
+  margin-bottom: $spacing-lg;
+  
+  @include respond-to(xs) {
+    font-size: $font-size-xxl;
+  }
+}
+
+h2 {
+  font-size: $font-size-xxl;
+  
+  @include respond-to(xs) {
+    font-size: $font-size-xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-xl;
+  
+  @include respond-to(xs) {
+    font-size: $font-size-lg;
+  }
+}
+
+h4 {
+  font-size: $font-size-lg;
+}
+
+h5 {
+  font-size: $font-size-base;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h6 {
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// Paragraph styles
+p {
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &.lead {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-light;
+    line-height: 1.5;
+  }
+  
+  &.small {
+    font-size: $font-size-sm;
+    opacity: 0.8;
+  }
+}
+
+// Link styles
+a {
+  color: $primary-color;
+  transition: color $animation-speed-normal $animation-ease;
+  
+  &:hover, &:focus {
+    color: darken($primary-color, 15%);
+    text-decoration: underline;
+  }
+  
+  &.no-underline:hover {
+    text-decoration: none;
+  }
+}
+
+// List styles
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-lg;
+  
+  li {
+    margin-bottom: $spacing-xs;
+  }
+  
+  &.unstyled {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+// Block quote
+blockquote {
+  font-family: $font-secondary;
+  font-style: italic;
+  border-left: $border-width-md solid $primary-color;
+  padding-left: $spacing-md;
+  margin: $spacing-lg 0;
+  color: darken($dark-color, 5%);
+  
+  p {
+    font-size: $font-size-lg;
+    line-height: 1.5;
+  }
+  
+  cite {
+    display: block;
+    font-style: normal;
+    font-weight: $font-weight-bold;
+    margin-top: $spacing-sm;
+    font-size: $font-size-sm;
+    
+    &:before {
+      content: "— ";
+    }
+  }
+}
+
+// Text utilities
+.text-primary { color: $primary-color; }
+.text-secondary { color: $secondary-color; }
+.text-accent { color: $accent-color; }
+.text-light { color: $light-color; }
+.text-dark { color: $dark-color; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+
+.font-weight-light { font-weight: $font-weight-light; }
+.font-weight-normal { font-weight: $font-weight-normal; }
+.font-weight-medium { font-weight: $font-weight-medium; }
+.font-weight-semibold { font-weight: $font-weight-semibold; }
+.font-weight-bold { font-weight: $font-weight-bold; }
+
+.font-primary { font-family: $font-primary; }
+.font-secondary { font-family: $font-secondary; }
+
+// Text with animated underline
+.animated-underline {
+  position: relative;
+  display: inline-block;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform $animation-speed-normal $animation-ease;
+  }
+  
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
+// Text with gradient
+.gradient-text {
+  background: linear-gradient(90deg, $primary-color, $secondary-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+// Animated text reveal (for headlines)
+.reveal-text {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  
+  span {
+    display: block;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform $animation-speed-slow $animation-ease-out, 
+                opacity $animation-speed-slow $animation-ease-out;
+  }
+  
+  &.is-revealed span {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Code and pre styles
+code, pre {
+  font-family: monospace;
+  font-size: 0.9em;
+  background-color: lighten($light-color, 2%);
+  border-radius: $border-radius-sm;
+}
+
+code {
+  padding: 0.2em 0.4em;
+}
+
+pre {
+  padding: $spacing-md;
+  overflow-x: auto;
+  margin-bottom: $spacing-md;
+  
+  code {
+    padding: 0;
+    background-color: transparent;
+  }
+} 

@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="truckGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7700" />
+      <stop offset="100%" stop-color="#ff3300" />
+    </linearGradient>
+    <linearGradient id="windowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a3d7ff" />
+      <stop offset="100%" stop-color="#7bbcff" />
+    </linearGradient>
+    <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#333333" />
+      <stop offset="100%" stop-color="#222222" />
+    </linearGradient>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8cbeff" />
+      <stop offset="100%" stop-color="#d4e8ff" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+      <feFlood flood-color="#ffdd00" flood-opacity="0.8" result="glow" />
+      <feComposite in="glow" in2="blur" operator="in" result="glowBlur" />
+      <feComposite in="SourceGraphic" in2="glowBlur" operator="over" />
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.3)" />
+    </filter>
+  </defs>
+
+  <style>
+    .sky {
+      fill: url(#skyGradient);
+    }
+    .road {
+      fill: url(#roadGradient);
+    }
+    .road-line {
+      animation: roadLineMove 3s linear infinite;
+    }
+    .truck-body {
+      fill: url(#truckGradient);
+      filter: url(#shadow);
+      animation: truckBounce 3s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    .truck-window {
+      fill: url(#windowGradient);
+      opacity: 0.9;
+    }
+    .wheel {
+      animation: wheelRotate 1.5s linear infinite;
+      transform-origin: center center;
+    }
+    .wheel-inner {
+      animation: wheelInnerRotate 1s linear infinite reverse;
+      transform-origin: center center;
+    }
+    .headlight {
+      animation: headlightGlow 1s ease-in-out infinite alternate;
+      filter: url(#glow);
+    }
+    .tow-arm {
+      transform-origin: 200px 220px;
+      animation: armMove 8s ease-in-out infinite;
+    }
+    .hook {
+      transform-origin: 328px 228px;
+      animation: hookSwing 4s ease-in-out infinite;
+    }
+    .smoke {
+      opacity: 0.6;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-name: smokeRise;
+      animation-timing-function: ease-out;
+    }
+    .smoke1 { animation-delay: 0s; }
+    .smoke2 { animation-delay: 1s; }
+    .smoke3 { animation-delay: 2s; }
+    .smoke4 { animation-delay: 3s; }
+    .cloud {
+      fill: white;
+      opacity: 0.8;
+      animation: cloudMove 30s linear infinite;
+    }
+    .cloud2 { animation-delay: -15s; }
+    .mountain {
+      fill: #7e6e5d;
+      opacity: 0.7;
+    }
+    .sun {
+      fill: #ffee88;
+      filter: url(#glow);
+      animation: sunPulse 4s ease-in-out infinite alternate;
+    }
+    .sun-ray {
+      transform-origin: 50px 50px;
+      animation: sunRayRotate 20s linear infinite;
+    }
+
+    @keyframes truckBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    @keyframes wheelRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes wheelInnerRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes headlightGlow {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    @keyframes armMove {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      75% { transform: rotate(-2deg); }
+    }
+    @keyframes hookSwing {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      75% { transform: rotate(-5deg); }
+    }
+    @keyframes smokeRise {
+      0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-20px, -60px) scale(2);
+        opacity: 0;
+      }
+    }
+    @keyframes roadLineMove {
+      0% { transform: translateX(60px); }
+      100% { transform: translateX(-60px); }
+    }
+    @keyframes cloudMove {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(600px); }
+    }
+    @keyframes sunPulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    @keyframes sunRayRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect class="sky" x="0" y="0" width="500" height="200" />
+  
+  <!-- Sun -->
+  <g transform="translate(50, 50)">
+    <circle class="sun" cx="0" cy="0" r="20" />
+    <g class="sun-ray">
+      <line x1="0" y1="-30" x2="0" y2="-40" stroke="#ffee88" stroke-width="2" />
+      <line x1="30" y1="0" x2="40" y2="0" stroke="#ffee88" stroke-width="2" />
+      <line x1="0" y1="30" x2="0" y2="40" stroke="#ffee88" stroke-width="2" />
+      <line x1="-30" y1="0" x2="-40" y2="0" stroke="#ffee88" stroke-width="2" />
+      <line x1="21" y1="-21" x2="28" y2="-28" stroke="#ffee88" stroke-width="2" />
+      <line x1="21" y1="21" x2="28" y2="28" stroke="#ffee88" stroke-width="2" />
+      <line x1="-21" y1="21" x2="-28" y2="28" stroke="#ffee88" stroke-width="2" />
+      <line x1="-21" y1="-21" x2="-28" y2="-28" stroke="#ffee88" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- Clouds -->
+  <path class="cloud" d="M20,80 Q30,70 40,80 Q55,70 70,80 Q80,70 90,80 Q100,70 110,80 L110,90 L20,90 Z" />
+  <path class="cloud cloud2" d="M320,60 Q330,50 340,60 Q355,50 370,60 Q380,50 390,60 Q400,50 410,60 L410,70 L320,70 Z" />
+
+  <!-- Mountains -->
+  <path class="mountain" d="M0,200 L80,120 L160,180 L240,100 L320,160 L400,120 L500,180 L500,200 Z" />
+
+  <!-- Road -->
+  <rect class="road" x="0" y="200" width="500" height="100" />
+  
+  <!-- Road Lines -->
+  <g class="road-line">
+    <rect x="20" y="250" width="40" height="5" fill="white" />
+    <rect x="100" y="250" width="40" height="5" fill="white" />
+    <rect x="180" y="250" width="40" height="5" fill="white" />
+    <rect x="260" y="250" width="40" height="5" fill="white" />
+    <rect x="340" y="250" width="40" height="5" fill="white" />
+    <rect x="420" y="250" width="40" height="5" fill="white" />
+    <rect x="500" y="250" width="40" height="5" fill="white" />
+  </g>
+
+  <!-- Tow Truck -->
+  <g class="truck-body">
+    <!-- Truck Cab -->
+    <path d="M100,220 L100,170 L150,170 L170,140 L240,140 L240,220 Z" />
+    <rect x="240" y="160" width="100" height="60" />
+    <rect x="290" y="150" width="50" height="10" />
+    
+    <!-- Truck details -->
+    <rect x="110" y="180" width="40" height="25" fill="#333" stroke="#222" stroke-width="1" />
+    <path class="truck-window" d="M170,142 L170,170 L238,170 L238,142 Z" />
+    <rect x="245" y="170" width="30" height="20" fill="#333" />
+    <rect x="290" y="170" width="40" height="20" fill="#333" />
+    
+    <!-- Front grill -->
+    <rect x="100" y="190" width="10" height="20" fill="#444" />
+    <rect x="105" y="195" width="5" height="10" fill="#333" />
+  </g>
+  
+  <!-- Headlights -->
+  <circle class="headlight" cx="105" cy="180" r="5" fill="#ffffcc" />
+  
+  <!-- Tow mechanism -->
+  <g class="tow-arm">
+    <rect x="200" y="220" width="130" height="8" fill="#444" />
+    <rect x="320" y="200" width="10" height="30" fill="#444" />
+    <g class="hook">
+      <path d="M328,228 C328,220 338,220 338,228 L338,240 C338,245 330,245 330,240 L330,235" fill="none" stroke="#444" stroke-width="5" />
+    </g>
+  </g>
+  
+  <!-- Wheels -->
+  <g class="wheel" transform="translate(140, 230)">
+    <circle cx="0" cy="0" r="20" fill="#333" stroke="#111" stroke-width="2" />
+    <circle cx="0" cy="0" r="14" fill="#666" stroke="#111" stroke-width="1" />
+    <circle cx="0" cy="0" r="5" fill="#333" />
+    <line x1="-14" y1="0" x2="14" y2="0" stroke="#111" stroke-width="1" />
+    <line x1="0" y1="-14" x2="0" y2="14" stroke="#111" stroke-width="1" />
+    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#111" stroke-width="1" />
+    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#111" stroke-width="1" />
+  </g>
+  
+  <g class="wheel" transform="translate(220, 230)">
+    <circle cx="0" cy="0" r="20" fill="#333" stroke="#111" stroke-width="2" />
+    <circle class="wheel-inner" cx="0" cy="0" r="14" fill="#666" stroke="#111" stroke-width="1" />
+    <circle cx="0" cy="0" r="5" fill="#333" />
+    <line x1="-14" y1="0" x2="14" y2="0" stroke="#111" stroke-width="1" />
+    <line x1="0" y1="-14" x2="0" y2="14" stroke="#111" stroke-width="1" />
+    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#111" stroke-width="1" />
+    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#111" stroke-width="1" />
+  </g>
+  
+  <g class="wheel" transform="translate(310, 230)">
+    <circle cx="0" cy="0" r="20" fill="#333" stroke="#111" stroke-width="2" />
+    <circle class="wheel-inner" cx="0" cy="0" r="14" fill="#666" stroke="#111" stroke-width="1" />
+    <circle cx="0" cy="0" r="5" fill="#333" />
+    <line x1="-14" y1="0" x2="14" y2="0" stroke="#111" stroke-width="1" />
+    <line x1="0" y1="-14" x2="0" y2="14" stroke="#111" stroke-width="1" />
+    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#111" stroke-width="1" />
+    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#111" stroke-width="1" />
+  </g>
+  
+  <!-- Smoke from exhaust -->
+  <circle class="smoke smoke1" cx="100" cy="190" r="5" fill="#dddddd" />
+  <circle class="smoke smoke2" cx="100" cy="190" r="5" fill="#dddddd" />
+  <circle class="smoke smoke3" cx="100" cy="190" r="5" fill="#dddddd" />
+  <circle class="smoke smoke4" cx="100" cy="190" r="5" fill="#dddddd" />
+</svg> 

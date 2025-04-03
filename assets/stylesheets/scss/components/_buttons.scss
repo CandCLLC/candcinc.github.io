@@ -1,0 +1,271 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+// Base button style
+.btn {
+  @include button-base;
+  
+  // Button variants
+  &-primary {
+    @include button-variant($primary-color);
+  }
+  
+  &-secondary {
+    @include button-variant($secondary-color);
+  }
+  
+  &-accent {
+    @include button-variant($accent-color);
+  }
+  
+  &-success {
+    @include button-variant($success-color);
+  }
+  
+  &-info {
+    @include button-variant($info-color);
+  }
+  
+  &-warning {
+    @include button-variant($warning-color);
+  }
+  
+  &-danger {
+    @include button-variant($danger-color);
+  }
+  
+  &-light {
+    @include button-variant($light-color, $dark-color);
+  }
+  
+  &-dark {
+    @include button-variant($dark-color);
+  }
+  
+  // Outline button variants
+  &-outline-primary {
+    @include button-outline($primary-color);
+  }
+  
+  &-outline-secondary {
+    @include button-outline($secondary-color);
+  }
+  
+  &-outline-accent {
+    @include button-outline($accent-color);
+  }
+  
+  &-outline-success {
+    @include button-outline($success-color);
+  }
+  
+  &-outline-info {
+    @include button-outline($info-color);
+  }
+  
+  &-outline-warning {
+    @include button-outline($warning-color);
+  }
+  
+  &-outline-danger {
+    @include button-outline($danger-color);
+  }
+  
+  &-outline-light {
+    @include button-outline($light-color);
+  }
+  
+  &-outline-dark {
+    @include button-outline($dark-color);
+  }
+  
+  // Button sizes
+  &-sm {
+    padding: calc($btn-padding-y / 1.5) calc($btn-padding-x / 1.5);
+    font-size: $font-size-sm;
+  }
+  
+  &-lg {
+    padding: calc($btn-padding-y * 1.5) calc($btn-padding-x * 1.5);
+    font-size: $font-size-lg;
+  }
+  
+  // Block button
+  &-block {
+    display: block;
+    width: 100%;
+  }
+  
+  // Icon button
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg, i {
+      margin-right: $spacing-xs;
+      
+      &:only-child {
+        margin-right: 0;
+      }
+    }
+    
+    &.btn-sm svg, &.btn-sm i {
+      margin-right: calc($spacing-xs / 1.5);
+    }
+    
+    &.btn-lg svg, &.btn-lg i {
+      margin-right: calc($spacing-xs * 1.5);
+    }
+  }
+  
+  // Rounded button
+  &-rounded {
+    border-radius: $border-radius-pill;
+  }
+  
+  // Circle button
+  &-circle {
+    border-radius: $border-radius-circle;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    &.btn-sm {
+      width: 2rem;
+      height: 2rem;
+    }
+    
+    &.btn-lg {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+  
+  // Animated button with hover effect
+  &-animated {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color $animation-speed-normal $animation-ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform $animation-speed-normal $animation-ease-out;
+    }
+    
+    &:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+  
+  // Glow effect on hover
+  &-glow {
+    &:hover {
+      box-shadow: 0 0 15px rgba($primary-color, 0.5);
+    }
+    
+    &.btn-primary:hover {
+      box-shadow: 0 0 15px rgba($primary-color, 0.5);
+    }
+    
+    &.btn-secondary:hover {
+      box-shadow: 0 0 15px rgba($secondary-color, 0.5);
+    }
+    
+    &.btn-accent:hover {
+      box-shadow: 0 0 15px rgba($accent-color, 0.5);
+    }
+    
+    &.btn-success:hover {
+      box-shadow: 0 0 15px rgba($success-color, 0.5);
+    }
+    
+    &.btn-info:hover {
+      box-shadow: 0 0 15px rgba($info-color, 0.5);
+    }
+    
+    &.btn-warning:hover {
+      box-shadow: 0 0 15px rgba($warning-color, 0.5);
+    }
+    
+    &.btn-danger:hover {
+      box-shadow: 0 0 15px rgba($danger-color, 0.5);
+    }
+  }
+  
+  // Loading state with spinner
+  &-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1rem;
+      height: 1rem;
+      margin: -0.5rem 0 0 -0.5rem;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      border-color: currentColor transparent currentColor transparent;
+      animation: button-loading-spinner 1s linear infinite;
+    }
+    
+    @keyframes button-loading-spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  
+  // Button group (for horizontal button groups)
+  &-group {
+    display: inline-flex;
+    position: relative;
+    
+    .btn {
+      position: relative;
+      border-radius: 0;
+      
+      &:first-child {
+        border-top-left-radius: $btn-border-radius;
+        border-bottom-left-radius: $btn-border-radius;
+      }
+      
+      &:last-child {
+        border-top-right-radius: $btn-border-radius;
+        border-bottom-right-radius: $btn-border-radius;
+      }
+      
+      &:not(:first-child) {
+        margin-left: -$btn-border-width;
+      }
+      
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        z-index: 1;
+      }
+    }
+  }
+} 
