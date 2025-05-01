@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
           
           // Calculate price based on weight and condition
-          const steelPricePerPound = 0.06;
+          const steelPricePerPound = 0.07;
           let conditionMultiplier = 1;
           
           switch(condition) {
@@ -762,4 +762,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-}); 
+});
