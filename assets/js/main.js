@@ -1284,3 +1284,94 @@ document.addEventListener('DOMContentLoaded', function() {
   
   observer.observe(reviewsCarousel);
 });
+
+// Push-Up Challenge Video Lightbox
+document.addEventListener('DOMContentLoaded', function() {
+  const videoLightbox = document.getElementById('video-lightbox');
+  const lightboxVideo = document.getElementById('lightbox-video');
+  const videoCards = document.querySelectorAll('.video-card');
+  
+  if (!videoLightbox || !lightboxVideo || videoCards.length === 0) return;
+  
+  const lightboxClose = videoLightbox.querySelector('.lightbox-close');
+  
+  // Open video lightbox
+  function openVideoLightbox(videoSrc) {
+    const source = lightboxVideo.querySelector('source');
+    if (source) {
+      source.src = videoSrc;
+      lightboxVideo.load();
+    }
+    videoLightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Auto-play video
+    lightboxVideo.play().catch(e => {
+      console.log('Autoplay prevented:', e);
+    });
+  }
+  
+  // Close video lightbox
+  function closeVideoLightbox() {
+    lightboxVideo.pause();
+    lightboxVideo.currentTime = 0;
+    videoLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  // Click on video cards to open lightbox
+  videoCards.forEach(card => {
+    const playBtn = card.querySelector('.play-btn');
+    const video = card.querySelector('video');
+    const videoSrc = video?.querySelector('source')?.src;
+    
+    if (playBtn && videoSrc) {
+      playBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openVideoLightbox(videoSrc);
+      });
+    }
+    
+    // Also allow clicking on the card itself
+    card.addEventListener('click', function(e) {
+      if (e.target === playBtn || playBtn.contains(e.target)) return;
+      if (videoSrc) {
+        openVideoLightbox(videoSrc);
+      }
+    });
+    
+    // Hover preview - play video thumbnail on hover
+    card.addEventListener('mouseenter', function() {
+      if (video) {
+        video.play().catch(() => {});
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  });
+  
+  // Close button
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeVideoLightbox);
+  }
+  
+  // Close on backdrop click
+  videoLightbox.addEventListener('click', function(e) {
+    if (e.target === videoLightbox) {
+      closeVideoLightbox();
+    }
+  });
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && videoLightbox.classList.contains('active')) {
+      closeVideoLightbox();
+    }
+  });
+});
