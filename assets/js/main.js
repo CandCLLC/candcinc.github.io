@@ -1305,7 +1305,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = videosCarousel.querySelector('.carousel-control.next');
     const cards = track.querySelectorAll('.video-card');
     
-    let currentIndex = 0;
+    let currentIndex = 1; // Start at second video
     
     function getCardsPerView() {
       if (window.innerWidth <= 480) return 1;
@@ -1402,7 +1402,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 250);
     });
     
-    // Initialize
+    // Initialize - scroll to starting position
+    scrollToIndex(currentIndex);
     updateButtons();
   }
   
