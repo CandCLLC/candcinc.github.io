@@ -1285,15 +1285,130 @@ document.addEventListener('DOMContentLoaded', function() {
   observer.observe(reviewsCarousel);
 });
 
-// Push-Up Challenge Video Lightbox
+// Push-Up Challenge Video Carousel & Lightbox
 document.addEventListener('DOMContentLoaded', function() {
   const videoLightbox = document.getElementById('video-lightbox');
   const lightboxVideo = document.getElementById('lightbox-video');
+  const videosCarousel = document.getElementById('videos-carousel');
   const videoCards = document.querySelectorAll('.video-card');
   
   if (!videoLightbox || !lightboxVideo || videoCards.length === 0) return;
   
   const lightboxClose = videoLightbox.querySelector('.lightbox-close');
+  
+  // ==================
+  // Video Carousel
+  // ==================
+  if (videosCarousel) {
+    const track = videosCarousel.querySelector('.videos-track');
+    const prevBtn = videosCarousel.querySelector('.carousel-control.prev');
+    const nextBtn = videosCarousel.querySelector('.carousel-control.next');
+    const cards = track.querySelectorAll('.video-card');
+    
+    let currentIndex = 0;
+    
+    function getCardsPerView() {
+      if (window.innerWidth <= 480) return 1;
+      if (window.innerWidth <= 768) return 2;
+      return 3;
+    }
+    
+    function getMaxIndex() {
+      return Math.max(0, cards.length - getCardsPerView());
+    }
+    
+    function getCardWidth() {
+      if (cards.length === 0) return 0;
+      const card = cards[0];
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 16;
+      return card.offsetWidth + gap;
+    }
+    
+    function scrollToIndex(index) {
+      const cardWidth = getCardWidth();
+      const scrollAmount = index * cardWidth;
+      track.style.transform = `translateX(-${scrollAmount}px)`;
+    }
+    
+    function updateButtons() {
+      const maxIndex = getMaxIndex();
+      if (prevBtn) {
+        prevBtn.style.opacity = currentIndex === 0 ? '0.4' : '1';
+        prevBtn.disabled = currentIndex === 0;
+      }
+      if (nextBtn) {
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.4' : '1';
+        nextBtn.disabled = currentIndex >= maxIndex;
+      }
+    }
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          scrollToIndex(currentIndex);
+          updateButtons();
+        }
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          scrollToIndex(currentIndex);
+          updateButtons();
+        }
+      });
+    }
+    
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeThreshold = 50;
+      const swipeDistance = touchEndX - touchStartX;
+      const maxIndex = getMaxIndex();
+      
+      if (swipeDistance < -swipeThreshold && currentIndex < maxIndex) {
+        currentIndex++;
+        scrollToIndex(currentIndex);
+        updateButtons();
+      } else if (swipeDistance > swipeThreshold && currentIndex > 0) {
+        currentIndex--;
+        scrollToIndex(currentIndex);
+        updateButtons();
+      }
+    }, { passive: true });
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex > maxIndex) {
+          currentIndex = maxIndex;
+        }
+        scrollToIndex(currentIndex);
+        updateButtons();
+      }, 250);
+    });
+    
+    // Initialize
+    updateButtons();
+  }
+  
+  // ==================
+  // Video Lightbox
+  // ==================
   
   // Open video lightbox
   function openVideoLightbox(videoSrc) {
