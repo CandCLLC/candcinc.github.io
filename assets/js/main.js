@@ -230,54 +230,153 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function initAnimations() {
-    const animatedElements = document.querySelectorAll('[data-aos]');
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
     
-    if (animatedElements.length === 0) return;
+    // Add animation classes to elements
+    addAnimationClasses();
     
-    const observer = new IntersectionObserver((entries) => {
+    // Create intersection observer for scroll-triggered animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.1
+    };
+    
+    const animationObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const element = entry.target;
-          const animationType = element.getAttribute('data-aos');
-          const delay = element.getAttribute('data-aos-delay') || 0;
+          const delay = element.dataset.animationDelay || 0;
           
           setTimeout(() => {
             requestAnimationFrame(() => {
-              switch (animationType) {
-                case 'fade-up':
-                  element.classList.add('animated-fade-up');
-                  break;
-                case 'fade-down':
-                  element.classList.add('animated-fade-down');
-                  break;
-                case 'fade-left':
-                  element.classList.add('animated-fade-left');
-                  break;
-                case 'fade-right':
-                  element.classList.add('animated-fade-right');
-                  break;
-                case 'zoom-in':
-                  element.classList.add('animated-zoom-in');
-                  break;
-                default:
-                  element.classList.add('animated-fade');
-              }
+              element.classList.add('animated');
             });
           }, parseInt(delay, 10));
           
-          observer.unobserve(element);
+          animationObserver.unobserve(element);
         }
       });
-    }, {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    });
+    }, observerOptions);
+    
+    // Observe all elements with animation classes
+    const animatedElements = document.querySelectorAll(
+      '.fade-up, .fade-in, .scale-in, .slide-left, .slide-right, .stagger-children, .animate-on-scroll'
+    );
     
     animatedElements.forEach(element => {
-      element.style.opacity = '0';
-      observer.observe(element);
+      animationObserver.observe(element);
     });
+  }
+  
+  function addAnimationClasses() {
+    // Section headers
+    document.querySelectorAll('.section-header').forEach(el => {
+      el.classList.add('fade-up');
+    });
+    
+    // Service cards with stagger
+    const servicesGrid = document.querySelector('.services-grid');
+    if (servicesGrid) {
+      servicesGrid.classList.add('stagger-children');
+      servicesGrid.querySelectorAll('.service-card').forEach(card => {
+        card.classList.add('fade-up');
+      });
+    }
+    
+    // About section
+    const aboutImage = document.querySelector('.about-image');
+    if (aboutImage) {
+      aboutImage.classList.add('slide-left');
+    }
+    
+    const aboutContent = document.querySelector('.about-content');
+    if (aboutContent) {
+      aboutContent.classList.add('slide-right');
+    }
+    
+    const aboutFeatures = document.querySelector('.about-features');
+    if (aboutFeatures) {
+      aboutFeatures.classList.add('stagger-children');
+    }
+    
+    // Junk car section
+    const junkCarContent = document.querySelector('.junk-car-content');
+    if (junkCarContent) {
+      junkCarContent.classList.add('slide-left');
+    }
+    
+    const quoteFormWrapper = document.querySelector('.quote-form-wrapper');
+    if (quoteFormWrapper) {
+      quoteFormWrapper.classList.add('fade-up');
+    }
+    
+    // Benefits
+    document.querySelectorAll('.benefit').forEach((el, index) => {
+      el.classList.add('fade-up');
+      el.dataset.animationDelay = index * 100;
+    });
+    
+    // Gallery carousel
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+      carousel.classList.add('scale-in');
+    }
+    
+    // Gallery thumbnails title
+    const thumbnailsTitle = document.querySelector('.thumbnails-title');
+    if (thumbnailsTitle) {
+      thumbnailsTitle.classList.add('fade-up');
+    }
+    
+    // Emergency CTA
+    const emergencyCta = document.querySelector('.emergency-cta');
+    if (emergencyCta) {
+      emergencyCta.classList.add('fade-up');
+    }
+    
+    // Contact section
+    const contactInfo = document.querySelector('.contact-info');
+    if (contactInfo) {
+      contactInfo.classList.add('slide-left');
+    }
+    
+    const contactMap = document.querySelector('.contact-map');
+    if (contactMap) {
+      contactMap.classList.add('slide-right');
+    }
+    
+    // Contact cards
+    document.querySelectorAll('.contact-card').forEach((el, index) => {
+      el.classList.add('fade-up');
+      el.dataset.animationDelay = index * 80;
+    });
+    
+    // Rating highlight
+    const ratingHighlight = document.querySelector('.rating-highlight');
+    if (ratingHighlight) {
+      ratingHighlight.classList.add('scale-in');
+    }
+    
+    // Feature cards (for location pages)
+    const featuresGrid = document.querySelector('.features-grid');
+    if (featuresGrid) {
+      featuresGrid.classList.add('stagger-children');
+    }
+    
+    // Area cards
+    const areasGrid = document.querySelector('.areas-grid');
+    if (areasGrid) {
+      areasGrid.classList.add('stagger-children');
+    }
+    
+    // Footer columns
+    const footerGrid = document.querySelector('.footer-grid');
+    if (footerGrid) {
+      footerGrid.classList.add('stagger-children');
+    }
   }
   
   // Detect when images are loaded
