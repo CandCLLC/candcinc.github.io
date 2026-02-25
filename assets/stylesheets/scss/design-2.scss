@@ -76,6 +76,10 @@ body {
   background-color: var(--craft-cream);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  &.menu-open {
+    overflow: hidden;
+  }
 }
 
 img {
@@ -258,6 +262,44 @@ em {
     display: flex;
     align-items: center;
     gap: var(--space-lg);
+  }
+  
+  // Mobile navigation dropdown
+  @media (max-width: 991px) {
+    &.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--craft-cream);
+      border-top: 1px solid var(--craft-sand);
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-md);
+      gap: 0;
+      animation: slideDown 0.3s ease-out;
+    }
+    
+    .nav-link {
+      padding: var(--space-md);
+      border-bottom: 1px solid var(--craft-sand);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -2218,6 +2260,11 @@ button.thumbnail-item {
   background-color: var(--craft-ivory);
   position: relative;
   overflow: hidden;
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 .landmark-bg {
@@ -2225,12 +2272,13 @@ button.thumbnail-item {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 50%;
+  width: 55%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.08;
+  opacity: 0.15;
   pointer-events: none;
+  z-index: 1;
   
   &::after {
     content: '';
@@ -2239,22 +2287,22 @@ button.thumbnail-item {
     background: linear-gradient(
       90deg,
       var(--craft-ivory) 0%,
-      transparent 30%,
-      transparent 70%,
+      rgba(245, 243, 240, 0.5) 40%,
+      rgba(245, 243, 240, 0.3) 70%,
       var(--craft-ivory) 100%
     );
   }
   
   @media (max-width: 991px) {
     width: 100%;
-    opacity: 0.05;
+    opacity: 0.1;
     
     &::after {
       background: linear-gradient(
         180deg,
         var(--craft-ivory) 0%,
-        transparent 20%,
-        transparent 80%,
+        rgba(245, 243, 240, 0.4) 30%,
+        rgba(245, 243, 240, 0.4) 70%,
         var(--craft-ivory) 100%
       );
     }
@@ -2268,31 +2316,41 @@ button.thumbnail-item {
   position: relative;
   overflow: hidden;
   
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+  
   .landmark-accent {
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 40%;
-    height: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
     background-size: cover;
-    background-position: center bottom;
+    background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.06;
+    opacity: 0.12;
     pointer-events: none;
+    z-index: 1;
     
     &::after {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        45deg,
-        transparent 0%,
-        var(--craft-cream) 70%
+        180deg,
+        var(--craft-cream) 0%,
+        rgba(250, 248, 246, 0.3) 30%,
+        rgba(250, 248, 246, 0.3) 70%,
+        var(--craft-cream) 100%
       );
     }
     
     @media (max-width: 991px) {
-      display: none;
+      opacity: 0.08;
     }
   }
 }
@@ -2302,6 +2360,8 @@ button.thumbnail-item {
   grid-template-columns: 1fr;
   gap: var(--space-2xl);
   align-items: start;
+  position: relative;
+  z-index: 3;
   
   @media (min-width: 992px) {
     grid-template-columns: 1.2fr 1fr;
@@ -2366,6 +2426,8 @@ button.thumbnail-item {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
+  position: relative;
+  z-index: 3;
 }
 
 .feature-card {
@@ -2373,12 +2435,14 @@ button.thumbnail-item {
   padding: var(--space-xl);
   background-color: white;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
+  position: relative;
+  z-index: 3;
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
   }
 }
 

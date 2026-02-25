@@ -54,6 +54,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body.menu-open {
+  overflow: hidden;
+}
 
 img {
   max-width: 100%;
@@ -222,7 +225,40 @@ em {
     gap: var(--space-lg);
   }
 }
+@media (max-width: 991px) {
+  .main-nav.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--craft-cream);
+    border-top: 1px solid var(--craft-sand);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-md);
+    gap: 0;
+    animation: slideDown 0.3s ease-out;
+  }
+  .main-nav .nav-link {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--craft-sand);
+  }
+  .main-nav .nav-link:last-child {
+    border-bottom: none;
+  }
+}
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .nav-link {
   font-weight: 500;
   color: var(--text-dark);
