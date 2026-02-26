@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     carousels.forEach((carousel, carouselIndex) => {
       const items = carousel.querySelectorAll('.carousel-item');
-      const indicators = carousel.querySelectorAll('.carousel-indicator');
+      const indicators = carousel.querySelectorAll('.indicator');
       const prevBtn = carousel.querySelector('.carousel-control.prev');
       const nextBtn = carousel.querySelector('.carousel-control.next');
       
@@ -102,7 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
       function showSlide(index) {
         // Reset active class
         items.forEach(item => item.classList.remove('active'));
-        indicators.forEach(indicator => indicator.classList.remove('active'));
+        indicators.forEach(indicator => {
+          indicator.classList.remove('active');
+          indicator.setAttribute('aria-selected', 'false');
+        });
         
         // Set the current slide
         currentSlide = index;
@@ -121,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (indicators.length && indicators[currentSlide]) {
           indicators[currentSlide].classList.add('active');
+          indicators[currentSlide].setAttribute('aria-selected', 'true');
         }
         
         // Reset autoplay
