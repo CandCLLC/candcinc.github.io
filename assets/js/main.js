@@ -1495,3 +1495,248 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// ==========================================
+// Microsoft Clarity Custom Event Tracking
+// ==========================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Helper function to safely call Clarity
+  function trackClarityEvent(eventName, data) {
+    if (typeof clarity === 'function') {
+      clarity('set', eventName, data || eventName);
+    }
+  }
+
+  // Track phone call clicks (high-value conversion)
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', function() {
+      trackClarityEvent('phone_call_click', 'call_initiated');
+      // Also set a custom tag for this user session
+      if (typeof clarity === 'function') {
+        clarity('set', 'user_intent', 'called');
+      }
+    });
+  });
+
+  // Track email link clicks
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', function() {
+      trackClarityEvent('email_click', 'email_initiated');
+    });
+  });
+
+  // Track CTA button clicks
+  document.querySelectorAll('.btn-primary, .cta-button, .emergency-cta a').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const btnText = this.textContent?.trim().substring(0, 30) || 'cta_button';
+      trackClarityEvent('cta_click', btnText);
+    });
+  });
+
+  // Track junk car form submissions
+  const junkCarForm = document.getElementById('junkCarForm');
+  if (junkCarForm) {
+    junkCarForm.addEventListener('submit', function() {
+      trackClarityEvent('junk_car_form_submit', 'quote_requested');
+      if (typeof clarity === 'function') {
+        clarity('set', 'user_intent', 'junk_car_quote');
+      }
+    });
+  }
+
+  // Track offer form submissions
+  const offerForm = document.querySelector('.offer-form');
+  if (offerForm) {
+    offerForm.addEventListener('submit', function() {
+      trackClarityEvent('offer_form_submit', 'offer_requested');
+    });
+  }
+
+  // Track service card interactions
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const serviceName = this.querySelector('h3')?.textContent?.trim() || 'unknown_service';
+      trackClarityEvent('service_card_click', serviceName);
+    });
+  });
+
+  // Track scroll depth milestones
+  let scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+  
+  window.addEventListener('scroll', function() {
+    const scrollPercent = Math.round(
+      (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+    );
+    
+    [25, 50, 75, 100].forEach(milestone => {
+      if (scrollPercent >= milestone && !scrollMilestones[milestone]) {
+        scrollMilestones[milestone] = true;
+        trackClarityEvent('scroll_depth', milestone + '%');
+      }
+    });
+  }, { passive: true });
+
+  // Track section visibility (which sections users see)
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id || entry.target.className.split(' ')[0];
+        if (sectionId) {
+          trackClarityEvent('section_view', sectionId);
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('section[id], .hero, .services, .about, .junk-car, .gallery, .contact').forEach(section => {
+    sectionObserver.observe(section);
+  });
+
+  // Track navigation menu clicks
+  document.querySelectorAll('.navbar-menu a, .nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+      const linkText = this.textContent?.trim() || 'nav_link';
+      trackClarityEvent('nav_click', linkText);
+    });
+  });
+
+  // Track mobile menu usage
+  const navbarToggle = document.getElementById('navbar-toggle');
+  if (navbarToggle) {
+    navbarToggle.addEventListener('click', function() {
+      trackClarityEvent('mobile_menu_toggle', 'toggled');
+    });
+  }
+
+  // Track gallery/lightbox interactions
+  document.querySelectorAll('.thumbnail-item, .carousel-item img').forEach(item => {
+    item.addEventListener('click', function() {
+      trackClarityEvent('gallery_image_click', 'image_viewed');
+    });
+  });
+
+  // Track video plays (push-up challenge section)
+  document.querySelectorAll('.video-card .play-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      trackClarityEvent('video_play', 'pushup_challenge');
+    });
+  });
+
+  // Identify user device type for segmentation
+  if (typeof clarity === 'function') {
+    const isMobile = window.innerWidth < 768;
+    clarity('set', 'device_type', isMobile ? 'mobile' : 'desktop');
+    
+    // ==========================================
+    // Enhanced Traffic Source & Search Tracking
+    // ==========================================
+    const referrer = document.referrer;
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Capture UTM parameters (from Google Ads, social campaigns, etc.)
+    const utmSource = urlParams.get('utm_source');
+    const utmMedium = urlParams.get('utm_medium');
+    const utmCampaign = urlParams.get('utm_campaign');
+    const utmTerm = urlParams.get('utm_term'); // This can contain search keywords from ads
+    const utmContent = urlParams.get('utm_content');
+    
+    if (utmSource) clarity('set', 'utm_source', utmSource);
+    if (utmMedium) clarity('set', 'utm_medium', utmMedium);
+    if (utmCampaign) clarity('set', 'utm_campaign', utmCampaign);
+    if (utmTerm) clarity('set', 'utm_term', utmTerm); // Ad keywords
+    if (utmContent) clarity('set', 'utm_content', utmContent);
+    
+    // Google Ads click ID (gclid) - indicates paid Google traffic
+    const gclid = urlParams.get('gclid');
+    if (gclid) {
+      clarity('set', 'traffic_type', 'google_ads');
+      clarity('set', 'gclid', 'present');
+    }
+    
+    // Facebook click ID (fbclid) - indicates Facebook traffic
+    const fbclid = urlParams.get('fbclid');
+    if (fbclid) {
+      clarity('set', 'traffic_type', 'facebook_ads');
+    }
+    
+    // Microsoft/Bing Ads click ID
+    const msclkid = urlParams.get('msclkid');
+    if (msclkid) {
+      clarity('set', 'traffic_type', 'bing_ads');
+    }
+    
+    // Detailed referrer categorization
+    if (referrer) {
+      try {
+        const referrerUrl = new URL(referrer);
+        const referrerHost = referrerUrl.hostname.toLowerCase();
+        
+        // Set the referring domain
+        clarity('set', 'referrer_domain', referrerHost);
+        
+        // Categorize search engines
+        if (referrerHost.includes('google.com') || referrerHost.includes('google.')) {
+          if (referrer.includes('/maps') || referrerHost.includes('maps.google')) {
+            clarity('set', 'traffic_source', 'google_maps');
+            clarity('set', 'search_engine', 'google_maps');
+          } else if (referrer.includes('/local') || referrer.includes('business.google')) {
+            clarity('set', 'traffic_source', 'google_business');
+            clarity('set', 'search_engine', 'google_business');
+          } else {
+            clarity('set', 'traffic_source', 'google_organic');
+            clarity('set', 'search_engine', 'google');
+          }
+        } else if (referrerHost.includes('bing.com')) {
+          clarity('set', 'traffic_source', 'bing_organic');
+          clarity('set', 'search_engine', 'bing');
+          // Bing sometimes passes query in referrer
+          const bingQuery = referrerUrl.searchParams.get('q');
+          if (bingQuery) clarity('set', 'search_query', bingQuery);
+        } else if (referrerHost.includes('yahoo.com')) {
+          clarity('set', 'traffic_source', 'yahoo_organic');
+          clarity('set', 'search_engine', 'yahoo');
+          const yahooQuery = referrerUrl.searchParams.get('p');
+          if (yahooQuery) clarity('set', 'search_query', yahooQuery);
+        } else if (referrerHost.includes('duckduckgo.com')) {
+          clarity('set', 'traffic_source', 'duckduckgo');
+          clarity('set', 'search_engine', 'duckduckgo');
+          const ddgQuery = referrerUrl.searchParams.get('q');
+          if (ddgQuery) clarity('set', 'search_query', ddgQuery);
+        } else if (referrerHost.includes('facebook.com') || referrerHost.includes('fb.com')) {
+          clarity('set', 'traffic_source', 'facebook');
+          clarity('set', 'social_network', 'facebook');
+        } else if (referrerHost.includes('instagram.com')) {
+          clarity('set', 'traffic_source', 'instagram');
+          clarity('set', 'social_network', 'instagram');
+        } else if (referrerHost.includes('tiktok.com')) {
+          clarity('set', 'traffic_source', 'tiktok');
+          clarity('set', 'social_network', 'tiktok');
+        } else if (referrerHost.includes('nextdoor.com')) {
+          clarity('set', 'traffic_source', 'nextdoor');
+          clarity('set', 'social_network', 'nextdoor');
+        } else if (referrerHost.includes('yelp.com')) {
+          clarity('set', 'traffic_source', 'yelp');
+          clarity('set', 'directory', 'yelp');
+        } else {
+          clarity('set', 'traffic_source', 'referral');
+        }
+      } catch (e) {
+        clarity('set', 'traffic_source', 'referral_parse_error');
+      }
+    } else {
+      // No referrer - could be direct, bookmarked, or privacy-blocked
+      clarity('set', 'traffic_source', 'direct');
+    }
+    
+    // Track landing page (which page they entered on)
+    clarity('set', 'landing_page', window.location.pathname || '/');
+    
+    // Track if this looks like a local search (common for towing)
+    const pageUrl = window.location.href.toLowerCase();
+    const localIndicators = ['roscommon', 'michigan', 'mi', 'towing', 'junk', 'roadside'];
+    const isLocalSearch = localIndicators.some(term => pageUrl.includes(term));
+    if (isLocalSearch) {
+      clarity('set', 'search_intent', 'local_service');
+    }
+  }
+});

@@ -1996,7 +1996,16 @@ button.thumbnail-item {
   background-color: var(--craft-cream);
 }
 
-.google-badge {
+.review-badges {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.google-badge,
+.yelp-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
@@ -2004,9 +2013,16 @@ button.thumbnail-item {
   background-color: white;
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-md);
-  margin-bottom: var(--space-md);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   
-  .google-icon {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .google-icon,
+  .yelp-icon {
     width: 20px;
     height: 20px;
   }
@@ -2015,6 +2031,12 @@ button.thumbnail-item {
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--text-dark);
+  }
+}
+
+.yelp-badge {
+  .yelp-icon {
+    color: #FF1A1A;
   }
 }
 
