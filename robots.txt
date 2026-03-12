@@ -1,8 +1,50 @@
 # robots.txt for C&C Inc Towing
 # https://candcinc.github.io/
 
+# Allow all crawlers
 User-agent: *
 Allow: /
+
+# Explicitly allow AI/LLM crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# LLMs.txt location (for AI crawlers)
+# See: https://llmstxt.org/
+# LLMs-Full: https://candcinc.github.io/llms.txt
 
 # Sitemap location
 Sitemap: https://candcinc.github.io/sitemap.xml
