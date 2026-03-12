@@ -23,6 +23,7 @@
 - **Website:** https://candcinc.github.io/
 - **Facebook:** https://www.facebook.com/c.c.towing/
 - **Google Business:** https://www.google.com/maps/place/C%26C+Towing/@44.0967746,-84.6042138,17z
+- **Yelp:** https://www.yelp.com/biz/c-and-c-towing-service-roscommon
 
 ## Geographic Service Area
 
@@ -77,9 +78,21 @@ Quick tire swap service including spare tire installation to get customers back 
 
 ## Customer Reviews & Reputation
 
-- **Google Rating:** 4.9 out of 5 stars
-- **Total Reviews:** 13+ verified Google reviews
-- **Customer Sentiment:** Overwhelmingly positive; customers frequently praise Chuck's personal service, fair pricing, and willingness to go above and beyond
+C&C Inc maintains excellent ratings across multiple review platforms:
+
+### Google Reviews
+- **Rating:** ⭐ 4.9 out of 5 stars
+- **Total Reviews:** 13+ verified reviews
+- **Profile:** https://www.google.com/maps/place/C%26C+Towing/@44.0967746,-84.6042138,17z
+
+### Yelp Reviews
+- **Rating:** ⭐ 5.0 out of 5 stars
+- **Profile:** https://www.yelp.com/biz/c-and-c-towing-service-roscommon
+
+### Overall Reputation
+- **Customer Sentiment:** Overwhelmingly positive across all platforms
+- **Common Praise:** Chuck's personal service, fair pricing, going above and beyond
+- **Response Rate:** Owner actively engages with customers
 
 ### Sample Customer Feedback Themes
 - "Goes above and beyond to help people"
@@ -87,6 +100,7 @@ Quick tire swap service including spare tire installation to get customers back 
 - "Super friendly, honest, and cares about customers not just money"
 - "Helped find parts and drove us to get them"
 - "Let stranded customer stay in guest room for free"
+- "Would recommend 100%"
 
 ## Unique Features
 
@@ -152,19 +166,26 @@ Coordinates: 44.0967746, -84.6042138
 Phone: +1-989-915-9121
 Currency: USD
 Price Range: $$
-Rating: 4.9/5 (13 reviews)
+Google Rating: 4.9/5 (13 reviews)
+Yelp Rating: 5.0/5
 Opening Hours: 24/7
 Founded: 2007
 ```
 
 ## Related Pages
 
+### Website Pages
 - Homepage: https://candcinc.github.io/
 - Roscommon Towing: https://candcinc.github.io/roscommon-towing.html
 - Houghton Lake Towing: https://candcinc.github.io/houghton-lake-towing.html
 - Higgins Lake Towing: https://candcinc.github.io/higgins-lake-towing.html
 - Prudenville Towing: https://candcinc.github.io/prudenville-towing.html
 - Grayling Towing: https://candcinc.github.io/grayling-towing.html
+
+### Review & Social Profiles
+- Google Business: https://www.google.com/maps/place/C%26C+Towing/@44.0967746,-84.6042138,17z
+- Yelp: https://www.yelp.com/biz/c-and-c-towing-service-roscommon
+- Facebook: https://www.facebook.com/c.c.towing/
 
 ## License & Attribution
 
