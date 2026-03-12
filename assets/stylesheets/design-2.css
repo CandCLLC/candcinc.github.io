@@ -2052,6 +2052,13 @@ button.thumbnail-item {
   position: relative;
   padding-left: var(--space-lg);
 }
+.review-content .quote-highlight {
+  font-weight: 600;
+  color: var(--text-dark);
+  background: linear-gradient(120deg, rgba(26, 26, 26, 0.06) 0%, transparent 100%);
+  padding: 0 2px;
+  border-radius: 2px;
+}
 .review-content .quote-icon {
   position: absolute;
   top: 0;
