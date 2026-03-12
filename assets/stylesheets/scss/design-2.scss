@@ -912,7 +912,7 @@ em {
   background-color: white;
   border-radius: var(--radius-md);
   
-  h4 {
+  h3 {
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -1001,7 +1001,7 @@ em {
   }
   
   .benefit-text {
-    h4 {
+    h3 {
       font-size: 1.125rem;
       margin-bottom: var(--space-xs);
     }
@@ -1223,7 +1223,7 @@ em {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
   color: white;
   
-  h4 {
+  h3 {
     color: white;
     margin-bottom: var(--space-xs);
   }
@@ -2199,7 +2199,7 @@ button.thumbnail-item {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 2px;
+  margin: 0 0 2px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2609,7 +2609,7 @@ button.thumbnail-item {
     color: var(--craft-accent);
   }
   
-  h4 {
+  h3 {
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -2705,7 +2705,7 @@ button.thumbnail-item {
 }
 
 .footer-nav, .footer-services, .footer-contact {
-  h4 {
+  h3 {
     color: white;
     font-size: 1rem;
     margin-bottom: var(--space-md);
@@ -3747,7 +3747,7 @@ button.thumbnail-item {
     }
     
     .benefit-text {
-      h4 {
+      h3 {
         font-size: 1rem;
       }
       

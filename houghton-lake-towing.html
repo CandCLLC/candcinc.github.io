@@ -28,10 +28,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   
-  <!-- Fonts -->
+  <!-- Fonts (async load to avoid render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet"></noscript>
   
   <!-- Styles -->
   <link rel="stylesheet" href="assets/stylesheets/design-2.css">
@@ -469,7 +470,7 @@
             <div class="contact-card">
               <svg class="icon"><use xlink:href="#icon-map-marker"></use></svg>
               <div>
-                <h4>Our Location</h4>
+                <h3>Our Location</h3>
                 <p>8320 N. Harrison Rd<br>Roscommon, MI 48653<br><em>(12 miles from Houghton Lake)</em></p>
               </div>
             </div>
@@ -477,7 +478,7 @@
             <div class="contact-card">
               <svg class="icon"><use xlink:href="#icon-phone"></use></svg>
               <div>
-                <h4>Call Now</h4>
+                <h3>Call Now</h3>
                 <p><a href="tel:+19899159121">(989) 915-9121</a></p>
               </div>
             </div>
@@ -485,7 +486,7 @@
             <div class="contact-card">
               <svg class="icon"><use xlink:href="#icon-clock"></use></svg>
               <div>
-                <h4>Hours</h4>
+                <h3>Hours</h3>
                 <p>Open 24/7 — Day or Night</p>
               </div>
             </div>
@@ -523,7 +524,7 @@
         </div>
         
         <nav class="footer-nav" aria-label="Footer navigation">
-          <h4>Quick Links</h4>
+          <h3>Quick Links</h3>
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/#services">Services</a></li>
@@ -534,7 +535,7 @@
         </nav>
         
         <div class="footer-services">
-          <h4>Service Areas</h4>
+          <h3>Service Areas</h3>
           <ul>
             <li><a href="roscommon-towing.html">Roscommon</a></li>
             <li><a href="higgins-lake-towing.html">Higgins Lake</a></li>
@@ -545,7 +546,7 @@
         </div>
         
         <div class="footer-contact">
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <ul>
             <li>
               <svg class="icon"><use xlink:href="#icon-map-marker"></use></svg>

@@ -807,7 +807,7 @@ em {
   background-color: white;
   border-radius: var(--radius-md);
 }
-.payment-methods h4 {
+.payment-methods h3 {
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -884,7 +884,7 @@ em {
   width: 28px;
   height: 28px;
 }
-.benefit .benefit-text h4 {
+.benefit .benefit-text h3 {
   font-size: 1.125rem;
   margin-bottom: var(--space-xs);
 }
@@ -1082,7 +1082,7 @@ em {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
   color: white;
 }
-.carousel-caption h4 {
+.carousel-caption h3 {
   color: white;
   margin-bottom: var(--space-xs);
 }
@@ -2000,7 +2000,7 @@ button.thumbnail-item {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 2px;
+  margin: 0 0 2px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2377,7 +2377,7 @@ button.thumbnail-item {
   height: 24px;
   color: var(--craft-accent);
 }
-.contact-card h4 {
+.contact-card h3 {
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2462,7 +2462,7 @@ button.thumbnail-item {
   max-width: 280px;
 }
 
-.footer-nav h4, .footer-services h4, .footer-contact h4 {
+.footer-nav h3, .footer-services h3, .footer-contact h3 {
   color: white;
   font-size: 1rem;
   margin-bottom: var(--space-md);
@@ -3325,7 +3325,7 @@ button.thumbnail-item {
     width: 22px;
     height: 22px;
   }
-  .benefit .benefit-text h4 {
+  .benefit .benefit-text h3 {
     font-size: 1rem;
   }
   .benefit .benefit-text p {
