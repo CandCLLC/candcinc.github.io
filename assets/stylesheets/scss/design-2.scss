@@ -3859,3 +3859,120 @@ button.thumbnail-item {
     }
   }
 }
+
+// ============================================
+// FAQ Section
+// ============================================
+
+.faq-section {
+  padding: var(--space-3xl) 0;
+  background-color: var(--craft-ivory);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  max-width: 900px;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.faq-item {
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base);
+  
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+  
+  &[open] {
+    box-shadow: var(--shadow-md);
+    
+    .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    .faq-question h3 {
+      color: var(--craft-accent);
+    }
+  }
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  cursor: pointer;
+  list-style: none;
+  
+  &::-webkit-details-marker {
+    display: none;
+  }
+  
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+    transition: color var(--transition-fast);
+  }
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--text-light);
+  transition: transform var(--transition-base), color var(--transition-fast);
+}
+
+.faq-answer {
+  padding: 0 var(--space-lg) var(--space-lg);
+  
+  p {
+    color: var(--text-medium);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0;
+    
+    a {
+      color: var(--craft-accent);
+      font-weight: 500;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    strong {
+      color: var(--text-dark);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .faq-section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .faq-question {
+    padding: var(--space-md);
+    
+    h3 {
+      font-size: 0.9375rem;
+    }
+  }
+  
+  .faq-answer {
+    padding: 0 var(--space-md) var(--space-md);
+  }
+}
