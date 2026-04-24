@@ -1,5 +1,5 @@
 # robots.txt for C&C Inc Towing
-# https://candcinc.github.io/
+# https://candcinc.net/
 
 # Allow all crawlers
 User-agent: *
@@ -44,10 +44,10 @@ Allow: /
 
 # LLMs.txt location (for AI crawlers)
 # See: https://llmstxt.org/
-# LLMs-Full: https://candcinc.github.io/llms.txt
+# LLMs-Full: https://candcinc.net/llms.txt
 
 # Sitemap location
-Sitemap: https://candcinc.github.io/sitemap.xml
+Sitemap: https://candcinc.net/sitemap.xml
 
 # Crawl-delay (optional, be nice to crawlers)
 Crawl-delay: 1
