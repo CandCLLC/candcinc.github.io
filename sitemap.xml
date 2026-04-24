@@ -3,73 +3,57 @@
   <!-- Main Pages -->
   <url>
     <loc>https://candcinc.github.io/</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- LLMs.txt for AI Crawlers -->
+  <!-- Push-Up Challenge Page -->
   <url>
-    <loc>https://candcinc.github.io/llms.txt</loc>
-    <lastmod>2026-03-12</lastmod>
+    <loc>https://candcinc.github.io/push-up-challenge.html</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   
   <!-- Service Area Pages -->
   <url>
     <loc>https://candcinc.github.io/roscommon-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://candcinc.github.io/houghton-lake-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://candcinc.github.io/higgins-lake-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://candcinc.github.io/prudenville-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://candcinc.github.io/grayling-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://candcinc.github.io/west-branch-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://candcinc.github.io/cadillac-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://candcinc.github.io/lake-city-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://candcinc.github.io/clare-towing.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
   
+  <!-- LLMs.txt for AI Crawlers -->
+  <url>
+    <loc>https://candcinc.github.io/llms.txt</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

@@ -3345,3 +3345,4 @@ button.thumbnail-item {
     height: 16px;
   }
 }
+.built-by{margin-top:var(--space-xs);font-size:.8125rem;color:rgba(255,255,255,.4)}.built-by a{color:rgba(255,255,255,.5);transition:color var(--transition-fast)}.built-by a:hover{color:rgba(255,255,255,.8)}
