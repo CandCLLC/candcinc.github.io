@@ -879,7 +879,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const showMoreBtn = document.getElementById('show-more-btn');
   
   if (!lightbox || !lightboxImg) return;
-  
+
+  // One-time shuffle of the fun section thumbnails on page load
+  if (thumbnailsGrid) {
+    const items = Array.from(thumbnailsGrid.querySelectorAll('.thumbnail-item'));
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      thumbnailsGrid.appendChild(items[j]);
+      items.splice(j, 1, items[i]);
+    }
+    // Re-apply visible/hidden: first 8 visible, rest hidden
+    const reshuffled = thumbnailsGrid.querySelectorAll('.thumbnail-item');
+    reshuffled.forEach((el, i) => {
+      if (i < 8) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  }
+
   let galleryImages = [];
   let currentImageIndex = 0;
   
