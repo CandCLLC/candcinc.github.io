@@ -1,0 +1,50 @@
+# .github/workflows/indexnow.yml
+# Notify IndexNow search engines after the site deploys to GitHub Pages.
+
+name: IndexNow
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "sitemap.xml"
+      - "*.html"
+      - "llms.txt"
+      - "5333e792db22bcd01c8da6d111aa1b6f.txt"
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Wait for GitHub Pages to publish
+        run: sleep 90
+
+      - name: Verify IndexNow key file is live
+        run: |
+          KEY_URL="https://candcinc.net/5333e792db22bcd01c8da6d111aa1b6f.txt"
+          for i in 1 2 3 4 5; do
+            CODE=$(curl -s -o /tmp/indexnow-key.txt -w "%{http_code}" "$KEY_URL")
+            BODY=$(cat /tmp/indexnow-key.txt | tr -d '\n\r')
+            if [ "$CODE" = "200" ] && [ "$BODY" = "5333e792db22bcd01c8da6d111aa1b6f" ]; then
+              echo "Key file verified at $KEY_URL"
+              exit 0
+            fi
+            echo "Attempt $i: HTTP $CODE — retrying in 30s..."
+            sleep 30
+          done
+          echo "Key file not reachable yet; continuing with submission anyway."
+          exit 0
+
+      - name: Submit sitemap URLs to IndexNow
+        run: node scripts/submit-indexnow.js
