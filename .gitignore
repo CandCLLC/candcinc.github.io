@@ -8,3 +8,6 @@ Thumbs.db
 
 # Raw video source files - not served, keep them out of the deploy
 assets/videos/source/
+
+# Scratch output from the SEO audit
+.dims.json
