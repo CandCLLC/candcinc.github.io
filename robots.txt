@@ -49,5 +49,3 @@ Allow: /
 # Sitemap location
 Sitemap: https://candcinc.net/sitemap.xml
 
-# Crawl-delay (optional, be nice to crawlers)
-Crawl-delay: 1

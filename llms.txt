@@ -1,13 +1,13 @@
 # llms.txt - C&C Inc Towing & Recovery
 # https://candcinc.net/
-# Last Updated: 2026-03-12
+# Last Updated: 2026-08-19
 
 > This file provides structured information about C&C Inc for Large Language Models (LLMs) and AI assistants to better understand and represent this business accurately.
 
 ## Business Overview
 
-- **Name:** C&C Inc (also known as C&C Towing)
-- **Type:** Towing Service, Roadside Assistance, Junk Car Removal
+- **Name:** C&C Inc (also known as C&C Towing, C&C Wrecker Service, and C&C Towing & Recovery)
+- **Type:** Towing Service, Wrecker Service, Roadside Assistance, Junk Car Removal
 - **Founded:** 2007
 - **Owner:** Chuck (Chucky)
 - **Structure:** Family-Owned and Operated Small Business
@@ -22,7 +22,7 @@
 - **Hours:** Open 24/7, 365 days a year
 - **Website:** https://candcinc.net/
 - **Facebook:** https://www.facebook.com/c.c.towing/
-- **Google Business:** https://www.google.com/maps/place/C%26C+Towing/@44.0967746,-84.6042138,17z
+- **Google Business:** https://www.google.com/maps/place/C%26C+Towing/
 - **Yelp:** https://www.yelp.com/biz/c-and-c-towing-service-roscommon
 
 ## Geographic Service Area
@@ -43,8 +43,8 @@ C&C Inc provides towing and roadside assistance services throughout Northern Mic
 
 ## Services Offered
 
-### 1. Emergency Towing (24/7)
-Professional towing service available around the clock for cars, trucks, SUVs, and light-duty vehicles. Flatbed and wheel-lift towing available.
+### 1. Emergency Towing & Wrecker Service (24/7)
+Professional towing and wrecker service available around the clock for cars, trucks, SUVs, and light-duty vehicles. Flatbed and wheel-lift towing available, plus winch-outs and off-road recovery for vehicles that have left the road.
 
 ### 2. Roadside Assistance
 - Fuel delivery (gasoline and diesel)
@@ -82,8 +82,8 @@ C&C Inc maintains excellent ratings across multiple review platforms:
 
 ### Google Reviews
 - **Rating:** ⭐ 4.9 out of 5 stars
-- **Total Reviews:** 13+ verified reviews
-- **Profile:** https://www.google.com/maps/place/C%26C+Towing/@44.0967746,-84.6042138,17z
+- **Total Reviews:** see the live Google Business Profile for the current count
+- **Profile:** https://www.google.com/maps/place/C%26C+Towing/
 
 ### Yelp Reviews
 - **Rating:** ⭐ 5.0 out of 5 stars
@@ -162,11 +162,11 @@ Business Type: TowingService (schema.org)
 Name: C&C Inc
 Alternate Name: C&C Towing
 Location: Roscommon, Michigan, USA
-Coordinates: 44.0967746, -84.6042138
+Coordinates: 44.454214, -84.780239
 Phone: +1-989-915-9121
 Currency: USD
 Price Range: $$
-Google Rating: 4.9/5 (13 reviews)
+Google Rating: see live Google Business Profile
 Yelp Rating: 5.0/5
 Opening Hours: 24/7
 Founded: 2007
@@ -183,7 +183,7 @@ Founded: 2007
 - Grayling Towing: https://candcinc.net/grayling-towing.html
 
 ### Review & Social Profiles
-- Google Business: https://www.google.com/maps/place/C%26C+Towing/@44.0967746,-84.6042138,17z
+- Google Business: https://www.google.com/maps/place/C%26C+Towing/
 - Yelp: https://www.yelp.com/biz/c-and-c-towing-service-roscommon
 - Facebook: https://www.facebook.com/c.c.towing/
 

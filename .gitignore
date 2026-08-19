@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor / OS cruft
+Thumbs.db
+*.swp
+
+# Raw video source files - not served, keep them out of the deploy
+assets/videos/source/
