@@ -880,17 +880,21 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!lightbox || !lightboxImg) return;
 
-  // One-time shuffle of the fun section thumbnails on page load
+  // One-time shuffle of the fun section thumbnails on page load.
+  // Photos marked data-pin-first stay at the front and always remain visible.
   if (thumbnailsGrid) {
     const items = Array.from(thumbnailsGrid.querySelectorAll('.thumbnail-item'));
-    for (let i = items.length - 1; i > 0; i--) {
+    const pinned = items.filter(el => el.hasAttribute('data-pin-first'));
+    const rest = items.filter(el => !el.hasAttribute('data-pin-first'));
+    for (let i = rest.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      thumbnailsGrid.appendChild(items[j]);
-      items.splice(j, 1, items[i]);
+      const swap = rest[i];
+      rest[i] = rest[j];
+      rest[j] = swap;
     }
-    // Re-apply visible/hidden: first 8 visible, rest hidden
-    const reshuffled = thumbnailsGrid.querySelectorAll('.thumbnail-item');
-    reshuffled.forEach((el, i) => {
+    const ordered = pinned.concat(rest);
+    ordered.forEach(el => thumbnailsGrid.appendChild(el));
+    ordered.forEach((el, i) => {
       if (i < 8) {
         el.classList.remove('hidden');
       } else {

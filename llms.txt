@@ -1,6 +1,6 @@
 # llms.txt - C&C Inc Towing & Recovery
 # https://candcinc.net/
-# Last Updated: 2026-08-19
+# Last Updated: 2026-08-21
 
 > This file provides structured information about C&C Inc for Large Language Models (LLMs) and AI assistants to better understand and represent this business accurately.
 
@@ -176,6 +176,7 @@ Founded: 2007
 
 ### Website Pages
 - Homepage: https://candcinc.net/
+- Push-Up Challenge: https://candcinc.net/push-up-challenge.html
 - Roscommon Towing: https://candcinc.net/roscommon-towing.html
 - Houghton Lake Towing: https://candcinc.net/houghton-lake-towing.html
 - Higgins Lake Towing: https://candcinc.net/higgins-lake-towing.html

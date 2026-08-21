@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://candcinc.net/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -38,8 +39,68 @@
   </url>
   <url>
     <loc>https://candcinc.net/push-up-challenge.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <video:video>
+      <video:thumbnail_loc>https://candcinc.net/assets/videos/thumbnails/push-up-challenge-atv-trail-northern-michigan.webp</video:thumbnail_loc>
+      <video:title>ATV Trail Push-Up Challenge — $20 Off Towing | C&amp;C Inc Northern Michigan</video:title>
+      <video:description>A C&amp;C Inc customer drops for 20 push-ups on a gravel ATV trail in Northern Michigan to earn $20 off the towing bill. Chest to the ground, no breaks, Chuck judges.</video:description>
+      <video:content_loc>https://candcinc.net/assets/videos/push-up-challenge-atv-trail-northern-michigan.mp4</video:content_loc>
+      <video:publication_date>2026-07-25T17:39:58+00:00</video:publication_date>
+      <video:duration>73</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://candcinc.net/assets/videos/thumbnails/push-up-challenge-front-yard-roscommon-mi.webp</video:thumbnail_loc>
+      <video:title>Front Yard Push-Up Challenge — $20 Off Towing | C&amp;C Inc Roscommon MI</video:title>
+      <video:description>A neighbor earns $20 off a C&amp;C Inc tow by completing 20 push-ups on the front lawn. All 20, no breaks, chest to the ground. The Push-Up Challenge from Roscommon, Michigan.</video:description>
+      <video:content_loc>https://candcinc.net/assets/videos/push-up-challenge-front-yard-roscommon-mi.mp4</video:content_loc>
+      <video:publication_date>2026-07-03T16:29:35+00:00</video:publication_date>
+      <video:duration>62</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://candcinc.net/assets/videos/thumbnails/push-up-challenge-woods-northern-michigan.webp</video:thumbnail_loc>
+      <video:title>Push-Up Challenge in the Woods — $20 Off Towing | C&amp;C Inc Northern Michigan</video:title>
+      <video:description>A C&amp;C Inc customer knocks out 20 push-ups on a dirt two-track in Northern Michigan to earn $20 off the towing bill. Chest to the ground, no breaks, Chuck judges.</video:description>
+      <video:content_loc>https://candcinc.net/assets/videos/push-up-challenge-woods-northern-michigan.mp4</video:content_loc>
+      <video:publication_date>2026-07-04T18:39:13+00:00</video:publication_date>
+      <video:duration>29</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://candcinc.net/assets/videos/thumbnails/push-up-challenge-home-roscommon-mi.webp</video:thumbnail_loc>
+      <video:title>Indoor Push-Up Challenge — $20 Off Towing | C&amp;C Inc Roscommon MI</video:title>
+      <video:description>A neighbor earns $20 off a C&amp;C Inc tow by completing 20 push-ups indoors. All 20, no breaks, chest to the ground. The Push-Up Challenge from Roscommon, Michigan.</video:description>
+      <video:content_loc>https://candcinc.net/assets/videos/push-up-challenge-home-roscommon-mi.mp4</video:content_loc>
+      <video:publication_date>2026-06-09T12:54:22+00:00</video:publication_date>
+      <video:duration>52</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://candcinc.net/assets/videos/thumbnails/push-up-challenge-rain-roscommon-towing.webp</video:thumbnail_loc>
+      <video:title>Rainy Day Push-Up Challenge — $20 Off Towing | C&amp;C Inc Roscommon</video:title>
+      <video:description>Rain doesn't count as a break. A C&amp;C Inc customer completes 20 push-ups on wet pavement in Roscommon County for $20 off roadside towing.</video:description>
+      <video:content_loc>https://candcinc.net/assets/videos/push-up-challenge-rain-roscommon-towing.mp4</video:content_loc>
+      <video:publication_date>2026-05-24T17:06:20+00:00</video:publication_date>
+      <video:duration>21</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://candcinc.net/assets/videos/thumbnails/push-up-challenge-parking-lot-roscommon-mi.webp</video:thumbnail_loc>
+      <video:title>Parking Lot Push-Up Challenge — $20 Off Towing | C&amp;C Inc Roscommon MI</video:title>
+      <video:description>A customer drops and gives C&amp;C Inc 20 push-ups in a Roscommon parking lot while the wrecker hooks up — $20 off the towing bill.</video:description>
+      <video:content_loc>https://candcinc.net/assets/videos/push-up-challenge-parking-lot-roscommon-mi.mp4</video:content_loc>
+      <video:publication_date>2026-05-17T17:35:27+00:00</video:publication_date>
+      <video:duration>36</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
   </url>
 </urlset>
