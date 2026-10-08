@@ -882,20 +882,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // One-time shuffle of the fun section thumbnails on page load.
   // Photos marked data-pin-first stay at the front and always remain visible.
+  // Photos marked data-feature are sprinkled at random spots within the visible rows.
+  // 12 visible = full rows on the 4, 3 and 2 column layouts.
+  const initialVisible = 12;
   if (thumbnailsGrid) {
     const items = Array.from(thumbnailsGrid.querySelectorAll('.thumbnail-item'));
     const pinned = items.filter(el => el.hasAttribute('data-pin-first'));
-    const rest = items.filter(el => !el.hasAttribute('data-pin-first'));
+    const featured = items.filter(el => el.hasAttribute('data-feature') && !el.hasAttribute('data-pin-first'));
+    const rest = items.filter(el => !el.hasAttribute('data-pin-first') && !el.hasAttribute('data-feature'));
     for (let i = rest.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const swap = rest[i];
       rest[i] = rest[j];
       rest[j] = swap;
     }
+    const openSlots = Math.max(initialVisible - pinned.length - featured.length, 0);
+    featured.forEach((el, n) => {
+      rest.splice(Math.floor(Math.random() * (openSlots + n + 1)), 0, el);
+    });
     const ordered = pinned.concat(rest);
     ordered.forEach(el => thumbnailsGrid.appendChild(el));
     ordered.forEach((el, i) => {
-      if (i < 8) {
+      if (i < initialVisible) {
         el.classList.remove('hidden');
       } else {
         el.classList.add('hidden');
@@ -1093,7 +1101,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         const allItems = thumbnailsGrid.querySelectorAll('.thumbnail-item');
         allItems.forEach((item, index) => {
-          if (index >= 8) {
+          if (index >= initialVisible) {
             item.classList.remove('visible');
             item.classList.add('hidden');
           }
