@@ -81,12 +81,13 @@ Quick tire swap service including spare tire installation to get customers back 
 C&C Inc maintains excellent ratings across multiple review platforms:
 
 ### Google Reviews
-- **Rating:** ⭐ 4.9 out of 5 stars
-- **Total Reviews:** see the live Google Business Profile for the current count
+- **Rating:** ⭐ 5.0 out of 5 stars
+- **Total Reviews:** 20
 - **Profile:** https://www.google.com/maps/place/C%26C+Towing/
 
 ### Yelp Reviews
 - **Rating:** ⭐ 5.0 out of 5 stars
+- **Total Reviews:** 2
 - **Profile:** https://www.yelp.com/biz/c-and-c-towing-service-roscommon
 
 ### Overall Reputation
@@ -166,8 +167,8 @@ Coordinates: 44.454214, -84.780239
 Phone: +1-989-915-9121
 Currency: USD
 Price Range: $$
-Google Rating: see live Google Business Profile
-Yelp Rating: 5.0/5
+Google Rating: 5.0/5 (20 reviews)
+Yelp Rating: 5.0/5 (2 reviews)
 Opening Hours: 24/7
 Founded: 2007
 ```
